@@ -240,15 +240,8 @@ $base = "../../";
           </div>
         </div>
 
-        <div class="form-group">
-          <label class="form-label" for="rol">Tipo de cuenta *</label>
-          <select id="rol" name="id_rol" class="form-select" required>
-            <option value="">Selecciona un rol...</option>
-            <option value="2">Empleado — Gestión de inventario</option>
-            <option value="1">Administrador — Acceso completo</option>
-          </select>
-          <p class="field-error" id="rol-error">Selecciona un tipo de cuenta</p>
-        </div>
+        <!-- Rol fijo: empleado (id_rol = 2) -->
+        <input type="hidden" name="id_rol" value="2">
 
         <button type="submit" class="btn-login" id="submitBtn">
           <span id="btnContent">Crear Cuenta</span>
@@ -318,13 +311,11 @@ document.getElementById('regForm').addEventListener('submit', function(e) {
   var correo  = document.getElementById('correo');
   var pass    = document.getElementById('password');
   var confirm = document.getElementById('confirm_password');
-  var rol     = document.getElementById('rol');
   var valid   = true;
   if (!nombre.value.trim()) { nombre.classList.add('is-invalid'); document.getElementById('nombre-error').classList.add('show'); valid = false; }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo.value.trim())) { correo.classList.add('is-invalid'); document.getElementById('correo-error').classList.add('show'); valid = false; }
   if (pass.value.length < 6) { pass.classList.add('is-invalid'); document.getElementById('password-error').classList.add('show'); valid = false; }
   if (pass.value !== confirm.value) { confirm.classList.add('is-invalid'); document.getElementById('confirm-error').classList.add('show'); valid = false; }
-  if (!rol.value) { document.getElementById('rol-error').classList.add('show'); valid = false; }
   if (!valid) { e.preventDefault(); return; }
   document.getElementById('btnContent').textContent = 'Creando cuenta...';
   document.getElementById('submitBtn').disabled = true;

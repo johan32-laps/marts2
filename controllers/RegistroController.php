@@ -18,7 +18,7 @@ $correo           = trim($_POST['correo']           ?? '');
 $telefono         = trim($_POST['telefono']         ?? '');
 $password         = trim($_POST['password']         ?? '');
 $confirm_password = trim($_POST['confirm_password'] ?? '');
-$id_rol           = intval($_POST['id_rol']         ?? 0);
+$id_rol           = 2; // Siempre empleado en el registro público
 
 // Validaciones
 if (empty($nombre)) {
@@ -38,7 +38,7 @@ if ($password !== $confirm_password) {
     header("Location: ../views/usuarios/registro.php"); exit;
 }
 if ($id_rol <= 0) {
-    $_SESSION['error_reg'] = "Selecciona un tipo de cuenta.";
+    $_SESSION['error_reg'] = "Error interno de configuración de rol.";
     header("Location: ../views/usuarios/registro.php"); exit;
 }
 
