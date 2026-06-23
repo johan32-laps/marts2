@@ -1,0 +1,7 @@
+# Seguridad: solo permitir imágenes, bloquear ejecución de PHP
+<FilesMatch "\.php$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+Options -Indexes
